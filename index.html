@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file"  id="inputfile">
+    <button id="btn">button</button>
+    <table></table>
+</body>
+<script>
+let inputfeild=document.getElementById("inputfile")
+inputfeild.addEventListener("change",function(){
+    let fr=new FileReader()
+    fr.onloadend=((e)=>{
+        let res=fr.result
+        let csvarr=res.split("\n").map((e)=>e.split(",")).forEach((e)=>{
+            let a=e.map((e)=>`<td>${e}</td>`).join("")
+            let tr=document.createElement("tr")
+            tr.innerHTML=a
+            
+            document.querySelector("table").append(tr)
+
+        })
+        console.log(csvarr)
+    })
+    fr.readAsText(inputfeild.files[0])
+})
+
+
+
+
+
+
+
+
+    // let input=document.getElementById("inputfile")
+    // input.addEventListener("change",()=>{
+    //     let fr=new FileReader();
+    //     fr.onloadend=(e)=>{
+
+    //         let r= fr.result
+    //        let arr= r.split("\n").map((e)=>e.split(",")).forEach((e)=>{
+    //         let innertd=e.map((e)=>`<td>${e}</td>`).join("")
+    //         console.log(innertd)
+    //         let table=document.createElement("tr")
+    //         table.innerHTML=innertd
+    //         document.querySelector("table").append(table)
+
+    //        })
+    //         // console.log(arr)
+    //     }
+    //     fr.readAsText(input.files[0])
+    // })
+</script>
+</html>l
